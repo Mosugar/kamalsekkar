@@ -29,18 +29,18 @@ const About = () => {
     });
 
     tl.fromTo(image,
-      { opacity: 0, x: -100, scale: 0.8 },
-      { opacity: 1, x: 0, scale: 1, duration: 1.2, ease: "power3.out" }
+      { opacity: 0, scale: 0.8, rotateY: -15 },
+      { opacity: 1, scale: 1, rotateY: 0, duration: 1.2, ease: "power3.out" }
     )
-    .fromTo(content,
-      { opacity: 0, x: 100 },
-      { opacity: 1, x: 0, duration: 1, ease: "power3.out" },
+    .fromTo(content.children,
+      { opacity: 0, y: 30, stagger: 0.2 },
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power3.out" },
       "-=0.8"
     )
     .fromTo(stats.children,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power3.out" },
-      "-=0.5"
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)" },
+      "-=0.4"
     );
 
     // Counter animation
@@ -70,9 +70,16 @@ const About = () => {
 
   const achievements = [
     { number: 10, label: "Years Experience", suffix: "+" },
-    { number: 100, label: "Projects Completed", suffix: "+" },
-    { number: 7, label: "Years in Broadcast TV", suffix: "+" },
-    { number: 3, label: "Companies Founded", suffix: "" }
+    { number: 100, label: "Projects Delivered", suffix: "+" },
+    { number: 1, label: "Studios Founded", suffix: "" },
+    // { number: 50, label: "Happy Clients", suffix: "+" }
+  ];
+
+  const expertise = [
+    "Fashion & Portrait Photography",
+    "Commercial Video Production", 
+    "Brand Storytelling",
+    "Digital Content Strategy"
   ];
 
   return (
@@ -80,82 +87,77 @@ const About = () => {
       <div className={styles.container}>
         <div className={styles.aboutContent}>
           <div className={styles.imageSection} ref={imageRef}>
-            <div className={styles.imageWrapper}>
+            <div className={styles.imageContainer}>
               <div className={styles.profileImage}>
-                {/* Placeholder for Kamal's photo */}
-                <div className={styles.imagePlaceholder}>
-                  <span>📸</span>
-                </div>
+                <img 
+                  src="https://res.cloudinary.com/dylpck2et/image/upload/v1757189208/IMG_3066_aslunw.jpg" 
+                  alt="Kamal Sekkar - Professional Photographer & Cinematographer"
+                  className={styles.profilePhoto}
+                />
+                <div className={styles.imageFrame}></div>
               </div>
-              <div className={styles.imageOverlay}></div>
-            </div>
-            <div className={styles.floatingElements}>
-              <div className={styles.element1}>🎬</div>
-              <div className={styles.element2}>📺</div>
-              <div className={styles.element3}>🎨</div>
+              <div className={styles.creativeBadge}>
+                <span>10+ Years</span>
+                <small>Experience</small>
+              </div>
             </div>
           </div>
 
-          <div className={styles.textSection} ref={contentRef}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.subtitle}>About Me</span>
+          <div className={styles.contentSection} ref={contentRef}>
+            <div className={styles.header}>
+              <span className={styles.subtitle}>About</span>
               <h2 className={styles.title}>
-                Creative Director & 
-                <span className={styles.highlight}> Visual Storyteller</span>
+                Visual Storyteller &
+                <span className={styles.highlight}> Creative Director</span>
               </h2>
             </div>
 
             <div className={styles.description}>
               <p>
-                Hello, my name is <strong>Sekkar Kamal</strong>. I'm a Professional Photographer & 
-                Cinematographer with over a decade of experience in creating compelling visual narratives 
-                that span from intimate portraits to national broadcast television.
+                I'm <strong>Kamal Sekkar</strong>, a photographer and cinematographer with over a decade 
+                of experience creating compelling visual narratives. From intimate portraits to 
+                national broadcast television, I bring stories to life through the lens.
               </p>
               <p>
-                I hold a professional degree in <strong>Audiovisual & Cinema</strong> from Mondial Media 
-                International University, complemented by advanced studies at the International Institute 
-                of Media and Journalism. This solid educational foundation has been the cornerstone of my 
-                10+ year journey in the visual arts industry.
-              </p>
-              <p>
-                Currently serving as <strong>Founder & Creative Director of Wardd Studios</strong> since August 2024, 
-                I've successfully launched over 100 projects across diverse sectors including real estate, 
-                education, fashion, and e-commerce. My previous experience as a Camera Operator & Visual Content 
-                Producer at <strong>SNRT</strong> provided me with invaluable broadcast television expertise, 
-                where I produced content for national audiences.
-              </p>
-              <p>
-                My approach combines technical precision with creative vision, whether I'm directing a 
-                multi-disciplinary team, filming a music video, or crafting visual content for digital platforms. 
-                I personally handle filming, production, and editing while leading production and post-production teams.
+                As Founder of <strong>Wardd Studios</strong>, I've delivered 100+ projects across 
+                fashion, real estate, and e-commerce. My background includes broadcast work at 
+                <strong> SNRT</strong> and a professional degree in Audiovisual & Cinema.
               </p>
             </div>
 
-            <div className={styles.specialties}>
-              <h3>Core Specializations</h3>
-              <div className={styles.specialtyList}>
-                <span className={styles.specialtyItem}>Fashion Photography</span>
-                <span className={styles.specialtyItem}>Culinary Styling</span>
-                <span className={styles.specialtyItem}>Portrait Photography</span>
-                <span className={styles.specialtyItem}>Music Video Production</span>
-                <span className={styles.specialtyItem}>Commercial Content</span>
-                <span className={styles.specialtyItem}>TV Reportage & Documentaries</span>
-                <span className={styles.specialtyItem}>Brand Identity & Digital Marketing</span>
-                <span className={styles.specialtyItem}>Web Development</span>
+            <div className={styles.expertise}>
+              <h3>What I Do Best</h3>
+              <div className={styles.expertiseGrid}>
+                {expertise.map((item, index) => (
+                  <div key={index} className={styles.expertiseItem}>
+                    <span className={styles.expertiseIcon}>•</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className={styles.cta}>
+            <div className={styles.actions}>
+              <a 
+                href="#contact"
+                className={styles.primaryBtn}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Start a Project
+              </a>
               <a 
                 href="https://www.linkedin.com/in/kamal-sekkar/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className={styles.linkedinBtn}
+                className={styles.secondaryBtn}
               >
-                <span>Connect on LinkedIn</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
+                Connect
               </a>
             </div>
           </div>
@@ -163,12 +165,13 @@ const About = () => {
 
         <div className={styles.stats} ref={statsRef}>
           {achievements.map((achievement, index) => (
-            <div key={index} className={styles.statItem}>
+            <div key={index} className={styles.statCard}>
               <div className={styles.statNumber}>
                 <span data-count={achievement.number}>0</span>
                 <span className={styles.suffix}>{achievement.suffix}</span>
               </div>
               <div className={styles.statLabel}>{achievement.label}</div>
+              <div className={styles.statDecoration}></div>
             </div>
           ))}
         </div>

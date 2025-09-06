@@ -9,13 +9,20 @@ const Hero = () => {
   const subtitleRef = useRef(null);
   const descRef = useRef(null);
   const ctaRef = useRef(null);
+  const viewfinderRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 2.5 }); // Wait for preloader
     
-    tl.fromTo(titleRef.current,
+    // Animate viewfinder first
+    tl.fromTo(viewfinderRef.current,
+      { opacity: 0, scale: 1.2 },
+      { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" }
+    )
+    .fromTo(titleRef.current,
       { opacity: 0, y: 100 },
-      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }
+      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" },
+      "-=1"
     )
     .fromTo(subtitleRef.current,
       { opacity: 0, y: 50 },
@@ -63,7 +70,15 @@ const Hero = () => {
     <section id="home" className={styles.hero} ref={heroRef}>
       <div className={styles.heroBackground}>
         <div className={styles.gradientOverlay}></div>
-        <div className={styles.particles}></div>
+      </div>
+
+      <div className={styles.viewfinderContainer} ref={viewfinderRef}>
+        <img 
+          src="https://res.cloudinary.com/dylpck2et/image/upload/v1757191601/camera-lens-view-finder-display-background_z1samt.png"
+          alt="Camera Viewfinder"
+          className={styles.viewfinderImage}
+        />
+        <div className={styles.viewfinderOverlay}></div>
       </div>
       
       <div className={styles.heroContent}>
@@ -89,21 +104,16 @@ const Hero = () => {
                 className={styles.primaryBtn}
                 onClick={scrollToPortfolio}
               >
-                View Portfolio
+                <span>View Portfolio</span>
+                <div className={styles.btnGlow}></div>
               </button>
               <button 
                 className={styles.secondaryBtn}
                 onClick={scrollToContact}
               >
-                Get In Touch
+                <span>Get In Touch</span>
+                <div className={styles.btnBorder}></div>
               </button>
-            </div>
-          </div>
-          
-          <div className={styles.heroVisual}>
-            <div className={styles.cameraIcon}>
-              <div className={styles.lens}></div>
-              <div className={styles.flash}></div>
             </div>
           </div>
         </div>
@@ -113,6 +123,18 @@ const Hero = () => {
             <div className={styles.scrollWheel}></div>
           </div>
           <span>Scroll to explore</span>
+        </div>
+      </div>
+
+      {/* Recording overlay UI elements */}
+      <div className={styles.cameraUI}>
+        <div className={styles.recordingIndicator}>
+          <div className={styles.recDot}></div>
+          <span>REC</span>
+        </div>
+        <div className={styles.cameraSettings}>
+          <span className={styles.resolution}>4K • 60fps</span>
+          <span className={styles.timer}>00:00:47</span>
         </div>
       </div>
     </section>

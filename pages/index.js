@@ -10,6 +10,7 @@ import {
   Equipment,
   Preloader
 } from '../components';
+import SoftwareSkills from '@/components/SoftwareSkills';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -38,6 +39,7 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
+        <SoftwareSkills />
         <Portfolio />
         <Equipment />
         {/* Contact section will be added */}

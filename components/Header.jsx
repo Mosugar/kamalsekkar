@@ -17,7 +17,7 @@ const Header = () => {
       { opacity: 0, x: -50 },
       { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }
     )
-    .fromTo(navRef.current.children,
+    .fromTo(navRef.current?.children || [],
       { opacity: 0, y: -30 },
       { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" },
       "-=0.4"
@@ -28,7 +28,7 @@ const Header = () => {
       setScrolled(offset > 100);
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'experience', 'portfolio', 'equipment', 'contact'];
+      const sections = ['home', 'about', 'experience', 'software-skills', 'portfolio', 'equipment', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.querySelector(`#${section}`);
         if (element) {
@@ -48,12 +48,13 @@ const Header = () => {
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '#home', icon: '🏠' },
-    { name: 'About', href: '#about', icon: '👨‍💼' },
-    { name: 'Experience', href: '#experience', icon: '🎬' },
-    { name: 'Portfolio', href: '#portfolio', icon: '🎨' },
-    { name: 'Equipment', href: '#equipment', icon: '📷' },
-    { name: 'Contact', href: '#contact', icon: '💬' }
+    { name: 'Home', href: '#home', shortName: 'Home' },
+    { name: 'About', href: '#about', shortName: 'About' },
+    { name: 'Experience', href: '#experience', shortName: 'Experience' },
+    { name: 'Software', href: '#software-skills', shortName: 'Tools' },
+    { name: 'Portfolio', href: '#portfolio', shortName: 'Work' },
+    { name: 'Equipment', href: '#equipment', shortName: 'Gear' },
+    { name: 'Contact', href: '#contact', shortName: 'Contact' }
   ];
 
   const toggleMenu = () => {
@@ -86,7 +87,6 @@ const Header = () => {
           <div className={styles.logo} ref={logoRef}>
             <div className={styles.logoContainer}>
               <div className={styles.logoIcon}>
-                <div className={styles.lens}></div>
                 <div className={styles.aperture}>
                   <div className={styles.apertureBlade}></div>
                   <div className={styles.apertureBlade}></div>
@@ -95,6 +95,7 @@ const Header = () => {
                   <div className={styles.apertureBlade}></div>
                   <div className={styles.apertureBlade}></div>
                 </div>
+                <div className={styles.lens}></div>
               </div>
               <div className={styles.logoText}>
                 <span className={styles.firstName}>Kamal</span>
@@ -106,7 +107,8 @@ const Header = () => {
 
           {/* Creative Desktop Navigation */}
           <nav className={styles.nav} ref={navRef}>
-            {navigation.map((item) => (
+            <div className={styles.navBackground}></div>
+            {navigation.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -116,14 +118,14 @@ const Header = () => {
                   scrollToSection(item.href);
                 }}
               >
-                <span className={styles.navIcon}>{item.icon}</span>
                 <span className={styles.navText}>{item.name}</span>
-                <div className={styles.navGlow}></div>
+                <div className={styles.navIndicator}></div>
+                <div className={styles.navRipple}></div>
               </a>
             ))}
           </nav>
 
-          {/* Creative Contact CTA */}
+          {/* CTA Section */}
           <div className={styles.ctaSection}>
             <a 
               href="https://www.linkedin.com/in/kamal-sekkar/" 
@@ -132,8 +134,9 @@ const Header = () => {
               className={styles.linkedinBtn}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
+              <span>LinkedIn</span>
             </a>
             
             <button 
@@ -141,7 +144,7 @@ const Header = () => {
               onClick={() => scrollToSection('#contact')}
             >
               <span>Hire Me</span>
-              <div className={styles.btnGlow}></div>
+              <div className={styles.btnShine}></div>
             </button>
           </div>
 
@@ -162,7 +165,12 @@ const Header = () => {
         {/* Creative Mobile Navigation */}
         <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`}>
           <div className={styles.mobileNavContent}>
-            {navigation.map((item) => (
+            <div className={styles.mobileNavHeader}>
+              <h3>Navigation</h3>
+              <div className={styles.navProgress}></div>
+            </div>
+            
+            {navigation.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -172,9 +180,9 @@ const Header = () => {
                   scrollToSection(item.href);
                 }}
               >
-                <span className={styles.mobileNavIcon}>{item.icon}</span>
+                <span className={styles.linkNumber}>0{index + 1}</span>
                 <span className={styles.mobileNavText}>{item.name}</span>
-                <div className={styles.mobileNavRipple}></div>
+                <div className={styles.linkArrow}>→</div>
               </a>
             ))}
             
@@ -188,19 +196,15 @@ const Header = () => {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
-                Connect
+                Professional Profile
               </a>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Header Background Particles */}
-      <div className={styles.headerParticles}>
-        <div className={styles.particle}></div>
-        <div className={styles.particle}></div>
-        <div className={styles.particle}></div>
-      </div>
+      {/* Header accent line */}
+      <div className={styles.headerAccent}></div>
     </header>
   );
 };
