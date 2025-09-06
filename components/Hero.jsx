@@ -77,13 +77,11 @@ const Hero = () => {
             </h1>
             
             <h2 className={styles.subtitle} ref={subtitleRef}>
-              Professional Photographer & Cinematographer
+              Visual Storyteller & Cinematic Artist
             </h2>
             
             <p className={styles.description} ref={descRef}>
-              With over <span className={styles.highlight}>10+ years of experience</span>, 
-              I create high-quality visual content that captures emotion, detail, and story. 
-              Specialized in Fashion, Food, Portraits, Music Videos, Commercials & TV Reportage.
+              With a professional degree in <span className={styles.highlight}>Audiovisual & Cinematic Arts</span> and over a decade of experience since 2015, I've crafted compelling visual narratives from intimate portraits to broadcast television. Former collaborator with <span className={styles.highlight}>Laâyoune Regional TV</span>, I bring both creative vision and technical precision to every frame.
             </p>
             
             <div className={styles.cta} ref={ctaRef}>

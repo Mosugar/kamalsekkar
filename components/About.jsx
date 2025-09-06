@@ -70,9 +70,9 @@ const About = () => {
 
   const achievements = [
     { number: 10, label: "Years Experience", suffix: "+" },
-    { number: 500, label: "Projects Completed", suffix: "+" },
-    { number: 50, label: "Happy Clients", suffix: "+" },
-    { number: 15, label: "Awards Won", suffix: "" }
+    { number: 100, label: "Projects Completed", suffix: "+" },
+    { number: 7, label: "Years in Broadcast TV", suffix: "+" },
+    { number: 3, label: "Companies Founded", suffix: "" }
   ];
 
   return (
@@ -91,7 +91,7 @@ const About = () => {
             </div>
             <div className={styles.floatingElements}>
               <div className={styles.element1}>🎬</div>
-              <div className={styles.element2}>📷</div>
+              <div className={styles.element2}>📺</div>
               <div className={styles.element3}>🎨</div>
             </div>
           </div>
@@ -100,37 +100,48 @@ const About = () => {
             <div className={styles.sectionHeader}>
               <span className={styles.subtitle}>About Me</span>
               <h2 className={styles.title}>
-                Capturing Stories Through 
-                <span className={styles.highlight}> Visual Art</span>
+                Creative Director & 
+                <span className={styles.highlight}> Visual Storyteller</span>
               </h2>
             </div>
 
             <div className={styles.description}>
               <p>
                 Hello, my name is <strong>Sekkar Kamal</strong>. I'm a Professional Photographer & 
-                Cinematographer with over a decade of experience in creating compelling visual narratives.
+                Cinematographer with over a decade of experience in creating compelling visual narratives 
+                that span from intimate portraits to national broadcast television.
               </p>
               <p>
-                I hold a professional degree in <strong>Audiovisual & Cinematic Arts</strong> and began 
-                my career in 2015. My journey has taken me through various domains of visual storytelling, 
-                from intimate portrait sessions to large-scale commercial productions.
+                I hold a professional degree in <strong>Audiovisual & Cinema</strong> from Mondial Media 
+                International University, complemented by advanced studies at the International Institute 
+                of Media and Journalism. This solid educational foundation has been the cornerstone of my 
+                10+ year journey in the visual arts industry.
               </p>
               <p>
-                As a former collaborator with <strong>Laâyoune Regional TV</strong>, I've honed my skills 
-                in broadcast media while maintaining my passion for creative photography. I bring creativity, 
-                precision, and storytelling to every project, ensuring each frame tells a meaningful story.
+                Currently serving as <strong>Founder & Creative Director of Wardd Studios</strong> since August 2024, 
+                I've successfully launched over 100 projects across diverse sectors including real estate, 
+                education, fashion, and e-commerce. My previous experience as a Camera Operator & Visual Content 
+                Producer at <strong>SNRT</strong> provided me with invaluable broadcast television expertise, 
+                where I produced content for national audiences.
+              </p>
+              <p>
+                My approach combines technical precision with creative vision, whether I'm directing a 
+                multi-disciplinary team, filming a music video, or crafting visual content for digital platforms. 
+                I personally handle filming, production, and editing while leading production and post-production teams.
               </p>
             </div>
 
             <div className={styles.specialties}>
-              <h3>My Specializations</h3>
+              <h3>Core Specializations</h3>
               <div className={styles.specialtyList}>
                 <span className={styles.specialtyItem}>Fashion Photography</span>
-                <span className={styles.specialtyItem}>Food Photography</span>
+                <span className={styles.specialtyItem}>Culinary Styling</span>
                 <span className={styles.specialtyItem}>Portrait Photography</span>
-                <span className={styles.specialtyItem}>Music Videos</span>
-                <span className={styles.specialtyItem}>Commercials</span>
-                <span className={styles.specialtyItem}>TV Reportage</span>
+                <span className={styles.specialtyItem}>Music Video Production</span>
+                <span className={styles.specialtyItem}>Commercial Content</span>
+                <span className={styles.specialtyItem}>TV Reportage & Documentaries</span>
+                <span className={styles.specialtyItem}>Brand Identity & Digital Marketing</span>
+                <span className={styles.specialtyItem}>Web Development</span>
               </div>
             </div>
 

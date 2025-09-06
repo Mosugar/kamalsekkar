@@ -4,6 +4,10 @@ import Head from 'next/head';
 import {
   Header,
   Hero,
+  About,
+  Experience,
+  Portfolio,
+  Equipment,
   Preloader
 } from '../components';
 
@@ -32,7 +36,11 @@ export default function Home() {
       <div className={`main-container ${loading ? 'hidden' : 'block'}`}>
         <Header />
         <Hero />
-        {/* Other components will be added later */}
+        <About />
+        <Experience />
+        <Portfolio />
+        <Equipment />
+        {/* Contact section will be added */}
       </div>
     </>
   );

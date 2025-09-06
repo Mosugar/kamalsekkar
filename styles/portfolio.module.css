@@ -1,0 +1,539 @@
+/* styles/portfolio.module.css */
+.portfolio {
+    padding: 8rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .portfolio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 30% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: white;
+  }
+  
+  .subtitle {
+    color: var(--accent-blue);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Filter Tabs */
+  .filterTabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+  
+  .filterBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 50px;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .filterBtn:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.4);
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .filterBtn.active {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    border-color: var(--primary-blue);
+    color: white;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+  }
+  
+  .filterIcon {
+    font-size: 1.2rem;
+  }
+  
+  .count {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-weight: 500;
+  }
+  
+  /* Portfolio Grid */
+  .portfolioGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .portfolioItem {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .portfolioItem:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+  }
+  
+  .itemMedia {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .itemImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  .portfolioItem:hover .itemImage {
+    transform: scale(1.1);
+  }
+  
+  .videoThumbnail {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(59, 130, 246, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .portfolioItem:hover .playButton {
+    background: var(--primary-blue);
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+  }
+  
+  .shortsBadge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .itemOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    color: white;
+    padding: 2rem;
+    transform: translateY(80%);
+    transition: transform 0.4s ease;
+  }
+  
+  .portfolioItem:hover .itemOverlay {
+    transform: translateY(0);
+  }
+  
+  .overlayContent {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .categoryTag {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: var(--accent-blue);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+  
+  .itemTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  
+  .itemDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+  }
+  
+  .itemTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Lightbox Styles */
+  .lightboxOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .lightboxContainer {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    animation: slideUp 0.4s ease;
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+  }
+  
+  .closeButton:hover {
+    background: rgba(59, 130, 246, 0.4);
+    transform: scale(1.1);
+  }
+  
+  .lightboxContent {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    height: 80vh;
+  }
+  
+  .mediaSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    position: relative;
+  }
+  
+  .lightboxImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .lightboxVideo {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  .detailsSection {
+    padding: 2.5rem;
+    color: white;
+    overflow-y: auto;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(20px);
+  }
+  
+  .lightboxCategory {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: var(--accent-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+  
+  .lightboxTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  
+  .lightboxDescription {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+  }
+  
+  .lightboxTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .lightboxTag {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--accent-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .lightboxTag:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+  }
+  
+  .youtubeLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #ff0000, #cc0000);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+  }
+  
+  .youtubeLink:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.4);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .portfolioGrid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+  
+    .lightboxContent {
+      grid-template-columns: 1fr;
+      height: auto;
+      max-height: 90vh;
+    }
+  
+    .detailsSection {
+      padding: 2rem;
+    }
+  }
+  
+  @media (max-width: 968px) {
+    .portfolio {
+      padding: 4rem 0;
+    }
+  
+    .header {
+      margin-bottom: 3rem;
+    }
+  
+    .filterTabs {
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+    }
+  
+    .filterBtn {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  
+    .portfolioGrid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+  
+    .lightboxContainer {
+      width: 95%;
+      max-height: 95vh;
+    }
+  
+    .detailsSection {
+      padding: 1.5rem;
+    }
+  
+    .lightboxTitle {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .filterTabs {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .filterBtn {
+      width: 200px;
+      justify-content: center;
+    }
+  
+    .portfolioGrid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    .itemOverlay {
+      padding: 1rem;
+    }
+  
+    .closeButton {
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+    }
+  
+    .detailsSection {
+      padding: 1rem;
+    }
+  
+    .lightboxTitle {
+      font-size: 1.3rem;
+    }
+  
+    .lightboxDescription {
+      font-size: 1rem;
+    }
+  
+    .playButton {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+  }
