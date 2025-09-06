@@ -1,4 +1,4 @@
-// components/SoftwareSkills.jsx
+// components/SoftwareSkills.jsx - Updated with your specific tools
 import { useEffect, useRef, useState, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -68,10 +68,10 @@ const TiltComponent = memo(({ children, className = "" }) => {
 TiltComponent.displayName = "TiltComponent";
 
 // Individual skill bubble component
-const SkillBubble = memo(({ skill, category }) => {
+const SkillBubble = memo(({ skill }) => {
   return (
     <TiltComponent>
-      <div className={`${styles.skillBubble} ${styles[category]}`}>
+      <div className={styles.skillBubble}>
         <div className={styles.bubbleContent}>
           <div className={styles.iconWrapper}>
             <img
@@ -81,8 +81,7 @@ const SkillBubble = memo(({ skill, category }) => {
               loading="lazy"
             />
           </div>
-          <span className={styles.skillName}>{skill.name}</span>
-          <div className={styles.skillCategory}>{category}</div>
+          <div className={styles.skillTooltip}>{skill.name}</div>
         </div>
       </div>
     </TiltComponent>
@@ -134,7 +133,7 @@ const SoftwareSkills = () => {
     const skillEl = skillRef.current;
 
     if (skillEl) {
-      // Use timeline for better performance - exact same as your Skills component
+      // Use timeline for better performance
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: skillEl,
@@ -156,26 +155,36 @@ const SoftwareSkills = () => {
     }
   }, [isInView, mounted]);
 
-  // Photography/Cinematography software skills
+  // Your specific photography/cinematography software tools
   const softwareSkills = [
-    { icon: "/icons/premiere.svg", name: "Adobe Premiere Pro" },
-    { icon: "/icons/davinci.svg", name: "DaVinci Resolve" },
-    { icon: "/icons/after-effects.svg", name: "After Effects" },
-    { icon: "/icons/photoshop.svg", name: "Photoshop" },
-    { icon: "/icons/lightroom.svg", name: "Lightroom" },
-    { icon: "/icons/finalcut.svg", name: "Final Cut Pro" },
-    { icon: "/icons/illustrator.svg", name: "Illustrator" },
-    { icon: "/icons/figma.svg", name: "Figma" },
-    { icon: "/icons/capture-one.svg", name: "Capture One" },
-    { icon: "/icons/cinema4d.svg", name: "Cinema 4D" },
-    { icon: "/icons/blender.svg", name: "Blender" },
-    { icon: "/icons/audition.svg", name: "Adobe Audition" },
-    { icon: "/icons/bridge.svg", name: "Adobe Bridge" },
-    { icon: "/icons/media-encoder.svg", name: "Media Encoder" },
-    { icon: "/icons/frame-io.svg", name: "Frame.io" },
-    { icon: "/icons/youtube.svg", name: "YouTube Studio" },
-    { icon: "/icons/vimeo.svg", name: "Vimeo" },
-    { icon: "/icons/obs.svg", name: "OBS Studio" }
+    { 
+      icon: "https://res.cloudinary.com/dylpck2et/image/upload/v1757195296/adobe-premiere-svgrepo-com_j1bbrn.svg", 
+      name: "Adobe Premiere Pro" 
+    },
+    { 
+      icon: "https://res.cloudinary.com/dylpck2et/image/upload/v1757195299/DaVinci_Resolve_17_logo_yt5pad.svg", 
+      name: "DaVinci Resolve" 
+    },
+    { 
+      icon: "https://res.cloudinary.com/dylpck2et/image/upload/v1757195297/Adobe_After_Effects_CC_icon_b63iv0.svg", 
+      name: "After Effects" 
+    },
+    { 
+      icon: "https://res.cloudinary.com/dylpck2et/image/upload/v1757195296/Adobe_Photoshop_CC_icon_eyvhdv.svg", 
+      name: "Photoshop" 
+    },
+    { 
+      icon: "https://res.cloudinary.com/dylpck2et/image/upload/v1757195297/Adobe_Photoshop_Lightroom_CC_logo_mlwe8u.svg", 
+      name: "Lightroom" 
+    },
+    { 
+      icon: "https://res.cloudinary.com/dylpck2et/image/upload/v1757195297/icons8-final-cut-pro-x_fsawxi.svg", 
+      name: "Final Cut Pro" 
+    },
+    { 
+      icon: "https://res.cloudinary.com/dylpck2et/image/upload/v1757195297/Adobe_Illustrator_CC_icon_zepu0f.svg", 
+      name: "Illustrator" 
+    }
   ];
 
   return (
@@ -210,6 +219,5 @@ const SoftwareSkills = () => {
     </section>
   );
 };
-
 
 export default SoftwareSkills;

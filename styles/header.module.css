@@ -1,22 +1,22 @@
-/* styles/header.module.css */
+/* styles/header.module.css - Cinematic Director Header */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 0;
-    background: rgba(10, 10, 10, 0.85);
+    padding: 1rem 0;
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    border-bottom: 2px solid #2a2a2a;
     z-index: 1000;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .header.scrolled {
-    padding: 1rem 0;
-    background: rgba(10, 10, 10, 0.95);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 0;
+    background: rgba(10, 10, 10, 0.98);
+    border-bottom: 2px solid #ffd700;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   }
   
   .container {
@@ -32,17 +32,7 @@
     justify-content: space-between;
   }
   
-  .headerAccent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
-    opacity: 0.6;
-  }
-  
-  /* Logo Design */
+  /* Director Logo */
   .logo {
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -55,109 +45,44 @@
   .logoContainer {
     display: flex;
     align-items: center;
-    gap: 1rem;
-  }
-  
-  .logoIcon {
-    width: 50px;
-    height: 50px;
-    position: relative;
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
-  }
-  
-  .aperture {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: apertureRotate 8s linear infinite;
-  }
-  
-  .apertureBlade {
-    position: absolute;
-    width: 8px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 1px;
-    transform-origin: 4px 50%;
-    top: 50%;
-    left: 50%;
-    margin-left: -4px;
-    margin-top: -1px;
-  }
-  
-  .apertureBlade:nth-child(1) { transform: rotate(0deg); }
-  .apertureBlade:nth-child(2) { transform: rotate(60deg); }
-  .apertureBlade:nth-child(3) { transform: rotate(120deg); }
-  .apertureBlade:nth-child(4) { transform: rotate(180deg); }
-  .apertureBlade:nth-child(5) { transform: rotate(240deg); }
-  .apertureBlade:nth-child(6) { transform: rotate(300deg); }
-  
-  .lens {
-    width: 16px;
-    height: 16px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-  
-  @keyframes apertureRotate {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    gap: 0.5rem;
   }
   
   .logoText {
     display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
+    flex-direction: row;
+    gap: 0.5rem;
   }
   
-  .firstName {
+  .fullName {
     font-size: 1.4rem;
-    font-weight: 800;
-    color: white;
+    font-weight: 900;
+    color: #ffd700;
     line-height: 1;
-  }
-  
-  .lastName {
-    font-size: 1.4rem;
-    font-weight: 800;
-    background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1;
-  }
-  
-  .tagline {
-    font-size: 0.7rem;
-    color: #64748b;
-    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 1px;
+    font-family: 'Arial Black', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
   
-  /* Navigation Design */
+  /* Film Strip Navigation */
   .nav {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: rgba(30, 41, 59, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    gap: 0.2rem;
+    padding: 0.6rem 1rem;
+    background: rgba(26, 26, 26, 0.9);
+    backdrop-filter: blur(15px);
+    border: 2px solid #2a2a2a;
     border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .header.scrolled .nav {
+    background: rgba(26, 26, 26, 0.95);
+    border-color: #ffd700;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
   }
   
   .navBackground {
@@ -166,7 +91,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(30, 41, 59, 0.05));
+    background: linear-gradient(135deg, 
+      rgba(26, 26, 26, 0.8) 0%, 
+      rgba(42, 42, 42, 0.6) 50%, 
+      rgba(26, 26, 26, 0.8) 100%);
     border-radius: 50px;
     z-index: 1;
   }
@@ -176,27 +104,31 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.8rem 1.2rem;
-    color: #94a3b8;
-    font-weight: 500;
-    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+    color: #ccc;
+    font-weight: 600;
+    font-size: 0.85rem;
     text-decoration: none;
     border-radius: 25px;
     transition: all 0.3s ease;
     overflow: hidden;
     z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Courier New', monospace;
   }
   
   .navLink:hover {
-    color: white;
-    background: rgba(59, 130, 246, 0.15);
+    color: #ffd700;
+    background: rgba(42, 42, 42, 0.8);
     transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
   }
   
   .navLink.active {
-    color: white;
-    background: rgba(59, 130, 246, 0.2);
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    color: #ffd700;
+    background: rgba(42, 42, 42, 0.9);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
   }
   
   .navText {
@@ -206,12 +138,12 @@
   
   .navIndicator {
     position: absolute;
-    bottom: 0;
+    bottom: 2px;
     left: 50%;
     transform: translateX(-50%) scaleX(0);
     width: 20px;
     height: 2px;
-    background: var(--accent-blue);
+    background: #ffd700;
     border-radius: 1px;
     transition: transform 0.3s ease;
   }
@@ -226,7 +158,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
+    background: linear-gradient(135deg, 
+      rgba(255, 215, 0, 0.1) 0%, 
+      rgba(255, 237, 78, 0.05) 50%, 
+      rgba(255, 215, 0, 0.1) 100%);
     opacity: 0;
     border-radius: 25px;
     transition: opacity 0.3s ease;
@@ -234,10 +169,10 @@
   }
   
   .navLink:hover .navRipple {
-    opacity: 0.1;
+    opacity: 1;
   }
   
-  /* CTA Section */
+  /* Professional CTA Section */
   .ctaSection {
     display: flex;
     align-items: center;
@@ -248,40 +183,48 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.8rem 1.2rem;
-    background: linear-gradient(135deg, #0077b5, #0e76a8);
+    padding: 0.7rem 1.2rem;
+    background: linear-gradient(135deg, #0077b5, #005885);
     color: white;
     text-decoration: none;
-    border-radius: 25px;
-    font-weight: 500;
-    font-size: 0.9rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .linkedinBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(0, 119, 181, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
+    background: linear-gradient(135deg, #0088cc, #006699);
   }
   
   .hireMeBtn {
     position: relative;
     padding: 0.7rem 1.4rem;
-    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #1a1a1a;
     border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 0.8rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
   
   .hireMeBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, #ffe135, #ffd700);
   }
   
   .btnShine {
@@ -290,7 +233,10 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.4), 
+      transparent);
     transition: left 0.6s ease;
   }
   
@@ -301,25 +247,25 @@
   /* Mobile Menu Button */
   .menuButton {
     display: none;
-    width: 45px;
-    height: 45px;
-    background: rgba(30, 41, 59, 0.8);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    background: rgba(26, 26, 26, 0.9);
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
   }
   
   .menuButton:hover {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.5);
+    background: rgba(42, 42, 42, 0.9);
+    border-color: #ffd700;
   }
   
   .menuIcon {
     position: relative;
-    width: 20px;
-    height: 15px;
+    width: 18px;
+    height: 13px;
     margin: auto;
   }
   
@@ -327,7 +273,7 @@
     display: block;
     width: 100%;
     height: 2px;
-    background: var(--accent-blue);
+    background: #ffd700;
     border-radius: 1px;
     position: absolute;
     transition: all 0.3s ease;
@@ -361,7 +307,7 @@
     width: 100%;
     background: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 2px solid #2a2a2a;
     border-top: none;
     border-radius: 0 0 20px 20px;
     padding: 2rem 0;
@@ -369,7 +315,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   }
   
   .mobileNav.open {
@@ -385,20 +331,23 @@
   .mobileNavHeader {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    border-bottom: 1px solid #2a2a2a;
   }
   
   .mobileNavHeader h3 {
-    color: white;
+    color: #ffd700;
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Arial Black', sans-serif;
   }
   
   .navProgress {
     width: 100%;
     height: 2px;
-    background: rgba(59, 130, 246, 0.2);
+    background: #2a2a2a;
     border-radius: 1px;
     overflow: hidden;
   }
@@ -408,7 +357,7 @@
     display: block;
     width: 30%;
     height: 100%;
-    background: var(--primary-blue);
+    background: #ffd700;
     animation: progress 2s ease-in-out infinite;
   }
   
@@ -423,8 +372,8 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.5rem;
-    color: #94a3b8;
-    font-weight: 500;
+    color: #ccc;
+    font-weight: 600;
     text-decoration: none;
     border-radius: 15px;
     margin-bottom: 0.5rem;
@@ -433,19 +382,22 @@
     overflow: hidden;
     opacity: 0;
     transform: translateX(-30px);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Courier New', monospace;
   }
   
   .mobileNavLink:hover,
   .mobileNavLink.active {
-    color: white;
-    background: rgba(59, 130, 246, 0.1);
+    color: #ffd700;
+    background: rgba(42, 42, 42, 0.8);
     transform: translateX(0);
   }
   
   .linkNumber {
     font-size: 0.8rem;
-    color: var(--accent-blue);
-    font-weight: 600;
+    color: #ffd700;
+    font-weight: 700;
     width: 30px;
   }
   
@@ -456,7 +408,7 @@
   
   .linkArrow {
     font-size: 1.2rem;
-    color: var(--accent-blue);
+    color: #ffd700;
     opacity: 0;
     transform: translateX(-10px);
     transition: all 0.3s ease;
@@ -470,7 +422,7 @@
   .mobileNavFooter {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(59, 130, 246, 0.2);
+    border-top: 1px solid #2a2a2a;
     text-align: center;
   }
   
@@ -479,18 +431,41 @@
     align-items: center;
     gap: 0.5rem;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #0077b5, #0e76a8);
+    background: linear-gradient(135deg, #0077b5, #005885);
     color: white;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 119, 181, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
   
   .mobileLinkedinBtn:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(0, 119, 181, 0.4);
+  }
+  
+  /* Header Accent */
+  .headerAccent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 215, 0, 0.3) 20%, 
+      rgba(255, 215, 0, 0.8) 50%, 
+      rgba(255, 215, 0, 0.3) 80%, 
+      transparent);
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+  }
+  
+  .header.scrolled .headerAccent {
+    opacity: 1;
   }
   
   /* Responsive Design */
@@ -507,35 +482,30 @@
     }
   
     .logoText {
-      display: none;
+      display: flex;
     }
   
     .header {
-      padding: 1rem 0;
+      padding: 0.8rem 0;
     }
   
     .header.scrolled {
-      padding: 0.8rem 0;
+      padding: 0.6rem 0;
     }
   }
   
   @media (max-width: 640px) {
-    .firstName,
-    .lastName {
-      font-size: 1.2rem;
-    }
-  
-    .tagline {
-      font-size: 0.6rem;
+    .fullName {
+      font-size: 1.1rem;
     }
   
     .logoIcon {
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
     }
   
     .logoContainer {
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
   
     .container {

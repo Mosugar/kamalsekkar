@@ -1,4 +1,4 @@
-// components/Header.jsx
+// components/Header.jsx - Updated with better scroll trigger
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import styles from '../styles/header.module.css';
@@ -25,7 +25,9 @@ const Header = () => {
 
     const handleScroll = () => {
       const offset = window.scrollY;
-      setScrolled(offset > 100);
+      // Trigger solid background only after scrolling past 30% of viewport height
+      const triggerPoint = window.innerHeight * 0.3;
+      setScrolled(offset > triggerPoint);
 
       // Update active section based on scroll position
       const sections = ['home', 'about', 'experience', 'software-skills', 'portfolio', 'equipment', 'contact'];
@@ -86,21 +88,8 @@ const Header = () => {
           {/* Creative Logo */}
           <div className={styles.logo} ref={logoRef}>
             <div className={styles.logoContainer}>
-              <div className={styles.logoIcon}>
-                <div className={styles.aperture}>
-                  <div className={styles.apertureBlade}></div>
-                  <div className={styles.apertureBlade}></div>
-                  <div className={styles.apertureBlade}></div>
-                  <div className={styles.apertureBlade}></div>
-                  <div className={styles.apertureBlade}></div>
-                  <div className={styles.apertureBlade}></div>
-                </div>
-                <div className={styles.lens}></div>
-              </div>
               <div className={styles.logoText}>
-                <span className={styles.firstName}>Kamal</span>
-                <span className={styles.lastName}>Sekkar</span>
-                <span className={styles.tagline}>Visual Storyteller</span>
+                <span className={styles.fullName}>Kamal Sekkar</span>
               </div>
             </div>
           </div>

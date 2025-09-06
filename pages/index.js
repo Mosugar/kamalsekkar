@@ -8,9 +8,11 @@ import {
   Experience,
   Portfolio,
   Equipment,
-  Preloader
+  Preloader,
+  ContactFooter
 } from '../components';
 import SoftwareSkills from '@/components/SoftwareSkills';
+import { ContactIcon } from 'lucide-react';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -42,7 +44,7 @@ export default function Home() {
         <SoftwareSkills />
         <Portfolio />
         <Equipment />
-        {/* Contact section will be added */}
+        <ContactFooter />
       </div>
     </>
   );
