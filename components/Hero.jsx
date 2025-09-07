@@ -1,4 +1,4 @@
-// components/Hero.jsx - Optimized Full Size Cinematic Director Hero
+// components/Hero.jsx - Clean Modern Cinematic Hero
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import styles from '../styles/hero.module.css';
@@ -8,49 +8,43 @@ const Hero = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const ctaRef = useRef(null);
-  const viewfinderRef = useRef(null);
   const clapperRef = useRef(null);
   const filmStripRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 2.5 }); // Wait for preloader
+    const tl = gsap.timeline({ delay: 3 }); // Wait for preloader
     
-    // Cinematic entrance animations
+    // Clean entrance animations
     tl.fromTo(filmStripRef.current?.children || [],
-      { opacity: 0, x: -30 },
-      { opacity: 1, x: 0, duration: 1, stagger: 0.1, ease: "power2.out" }
-    )
-    .fromTo(viewfinderRef.current,
-      { opacity: 0, scale: 1.1 },
-      { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" },
-      "-=1"
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: "power2.out" }
     )
     .fromTo(clapperRef.current,
-      { opacity: 0, y: -50, rotateX: -20 },
-      { opacity: 1, y: 0, rotateX: 0, duration: 1.2, ease: "back.out(1.7)" },
-      "-=1"
+      { opacity: 0, y: -30, scale: 0.9 },
+      { opacity: 1, y: 0, scale: 1, duration: 1, ease: "back.out(1.7)" },
+      "-=0.6"
     )
     .fromTo(titleRef.current,
-      { opacity: 0, y: 100, scale: 0.9 },
-      { opacity: 1, y: 0, scale: 1, duration: 1.4, ease: "power3.out" },
+      { opacity: 0, y: 50, scale: 0.95 },
+      { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" },
       "-=0.8"
     )
     .fromTo(subtitleRef.current,
-      { opacity: 0, y: 50, rotateX: -10 },
-      { opacity: 1, y: 0, rotateX: 0, duration: 1.2, ease: "power3.out" },
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
       "-=0.6"
     )
     .fromTo(ctaRef.current?.children || [],
-      { opacity: 0, scale: 0.8, y: 30 },
+      { opacity: 0, scale: 0.9, y: 20 },
       { opacity: 1, scale: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)" },
       "-=0.4"
     );
 
-    // Professional parallax effect
+    // Subtle parallax effect
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       const parallax = heroRef.current;
-      const speed = scrolled * 0.15; // Subtle parallax for cinematic feel
+      const speed = scrolled * 0.1;
       if (parallax) {
         parallax.style.transform = `translateY(${speed}px)`;
       }
@@ -76,35 +70,21 @@ const Hero = () => {
 
   return (
     <section id="home" className={styles.hero} ref={heroRef}>
-      {/* Cinematic Background Layers */}
-      <div className={styles.heroBackground}>
-        <div className={styles.gradientOverlay}></div>
-      </div>
+      {/* Clean Background */}
+      <div className={styles.heroBackground}></div>
 
-      {/* Film Strip Decoration */}
+      {/* Minimal Film Strip */}
       <div className={styles.filmStrip} ref={filmStripRef}>
         <div className={styles.perforation}></div>
         <div className={styles.perforation}></div>
         <div className={styles.perforation}></div>
-        <div className={styles.perforation}></div>
-        <div className={styles.perforation}></div>
-      </div>
-
-      {/* Viewfinder Background Integration */}
-      <div className={styles.viewfinderContainer} ref={viewfinderRef}>
-        <img 
-          src="https://res.cloudinary.com/dylpck2et/image/upload/v1757191601/camera-lens-view-finder-display-background_z1samt.png"
-          alt="Camera Viewfinder Background"
-          className={styles.viewfinderImage}
-        />
-        <div className={styles.viewfinderOverlay}></div>
       </div>
       
       {/* Main Hero Content */}
       <div className={styles.heroContent}>
         <div className={styles.container}>
           <div className={styles.heroText}>
-            {/* Director's Clapperboard */}
+            {/* Modern Clapperboard */}
             <div className={styles.clapperboard} ref={clapperRef}>
               <div className={styles.clapperStripes}>
                 <div className={styles.clapperStripe}></div>
@@ -117,12 +97,11 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Cinematic Title */}
+            {/* Clean Title */}
             <h1 className={styles.heroTitle} ref={titleRef}>
               <span className={styles.greeting}>Lights, Camera, Action</span>
-              <br />
-              <span className={styles.name}>Kamal</span>
-              <span className={styles.accent}> Sekkar</span>
+              <span className={styles.name}>KAMAL</span>
+              <span className={styles.accent}>SEKKAR</span>
             </h1>
             
             {/* Professional Subtitle */}
@@ -137,14 +116,14 @@ const Hero = () => {
                 onClick={scrollToPortfolio}
                 aria-label="View Portfolio Reel"
               >
-                <span>View Reel</span>
+                View Reel
               </button>
               <button 
                 className={styles.secondaryBtn}
                 onClick={scrollToContact}
                 aria-label="Get In Touch"
               >
-                <span>Get In Touch</span>
+                Get In Touch
               </button>
             </div>
           </div>
@@ -152,11 +131,11 @@ const Hero = () => {
 
         {/* Director Credits */}
         <div className={styles.heroCredits}>
-          <div>DIRECTED BY KAMAL SEKKAR</div>
+          Directed by Kamal Sekkar
         </div>
       </div>
 
-      {/* Professional Camera UI */}
+      {/* Minimal Camera UI */}
       <div className={styles.cameraUI}>
         {/* Recording Indicator */}
         <div className={styles.recordingIndicator}>
@@ -164,14 +143,14 @@ const Hero = () => {
           <span>RECORDING</span>
         </div>
         
-        {/* Camera Settings Display */}
+        {/* Camera Settings */}
         <div className={styles.cameraSettings}>
           <div className={styles.resolution}>4K • CINEMA</div>
           <div className={styles.timer}>00:00:47</div>
         </div>
       </div>
 
-      {/* Film Grain Effect */}
+      {/* Subtle Film Grain */}
       <div className={styles.filmGrain}></div>
     </section>
   );
