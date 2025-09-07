@@ -1,4 +1,4 @@
-// components/Experience.jsx
+// components/Experience.jsx - Refined with cleaner animations
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -8,7 +8,7 @@ const Experience = () => {
   const [mounted, setMounted] = useState(false);
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
-  const timelineRef = useRef(null);
+  const cardsRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
@@ -23,18 +23,18 @@ const Experience = () => {
 
     const section = sectionRef.current;
     const header = headerRef.current;
-    const timeline = timelineRef.current;
+    const cards = cardsRef.current;
 
-    if (!section || !header || !timeline) return;
+    if (!section || !header || !cards) return;
 
-    // Header animation
+    // Simple header animation
     gsap.fromTo(header,
-      { opacity: 0, y: 50 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
-        duration: 1,
-        ease: "power3.out",
+        duration: 0.8,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: section,
           start: 'top 80%',
@@ -43,20 +43,18 @@ const Experience = () => {
       }
     );
 
-    // Timeline items animation
-    const timelineItems = timeline.querySelectorAll(`.${styles.experienceCard}`);
-    timelineItems.forEach((item, index) => {
-      gsap.fromTo(item,
-        { opacity: 0, y: 50, scale: 0.9 },
+    // Clean card animations - one at a time
+    const experienceCards = cards.querySelectorAll(`.${styles.experienceCard}`);
+    experienceCards.forEach((card, index) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          delay: index * 0.1,
+          duration: 0.6,
+          ease: "power2.out",
           scrollTrigger: {
-            trigger: item,
+            trigger: card,
             start: 'top 85%',
             toggleActions: 'play none none reverse'
           }
@@ -79,16 +77,15 @@ const Experience = () => {
       period: "August 2024 - Present",
       type: "current",
       location: "Morocco",
-      description: "Leading a full-service creative agency with 100+ successfully launched projects across diverse sectors.",
+      description: "Leading a full-service creative agency specializing in visual storytelling across multiple industries. Building comprehensive brand experiences through photography, videography, and digital content creation.",
       achievements: [
-        "Founded multi-disciplinary creative agency",
-        "100+ projects across real estate, education, fashion",
-        "Built team covering video production to web development", 
-        "Established brand identity and digital marketing services"
+        "Founded multi-disciplinary creative agency from ground up",
+        "Successfully delivered 100+ projects across diverse sectors",
+        "Established comprehensive service offering from concept to delivery",
+        "Built strategic partnerships with key industry players"
       ],
-      technologies: ["Leadership", "Project Management", "Video Production", "Business Development"],
-      gradient: "from-emerald-500 to-teal-600",
-      iconBg: "bg-emerald-500"
+      technologies: ["Leadership", "Creative Direction", "Project Management", "Business Development"],
+      iconText: "WS"
     },
     {
       id: 2,
@@ -97,16 +94,15 @@ const Experience = () => {
       period: "March 2023 - August 2024",
       type: "broadcast",
       location: "Morocco",
-      description: "Broadcast television experience producing content for national audiences across Morocco.",
+      description: "Professional broadcast experience creating content for national television audiences. Specialized in multi-camera operations, live production workflows, and documentary storytelling.",
       achievements: [
-        "Produced and directed TV series 'BYED OU KHEL'",
-        "Specialized in television reporting and documentaries",
-        "Mastered multi-camera setups and live production",
-        "Created content reaching diverse national audiences"
+        "Lead camera operator for national TV series 'BYED OU KHEL'",
+        "Mastered broadcast-standard multi-camera setups and workflows",
+        "Developed expertise in live television production environments",
+        "Created compelling documentary content for diverse audiences"
       ],
-      technologies: ["Broadcast TV", "Multi-camera Setup", "Live Production", "Documentary"],
-      gradient: "from-violet-500 to-purple-600",
-      iconBg: "bg-violet-500"
+      technologies: ["Broadcast Production", "Multi-camera Systems", "Live TV", "Documentary"],
+      iconText: "SN"
     },
     {
       id: 3,
@@ -115,20 +111,17 @@ const Experience = () => {
       period: "2020 - 2024",
       type: "creative",
       location: "Morocco",
-      description: "Specialized in music video production and event coverage for local and national artists.",
+      description: "Specialized in music video production and creative content for the entertainment industry. Developed signature style combining technical excellence with artistic vision.",
       achievements: [
-        "Produced music videos for local and national artists",
-        "Mastered lighting for various environments",
-        "Created viral social media content and campaigns",
-        "Built strong reputation in music industry"
+        "Produced high-impact music videos for emerging and established artists",
+        "Mastered advanced lighting techniques for various shooting environments",
+        "Created viral social media campaigns with significant engagement",
+        "Built strong reputation within Morocco's music and entertainment industry"
       ],
-      technologies: ["Music Videos", "Event Coverage", "Social Media", "Lighting Design"],
-      gradient: "from-blue-500 to-cyan-600",
-      iconBg: "bg-blue-500"
+      technologies: ["Music Videos", "Event Photography", "Social Media Content", "Creative Lighting"],
+      iconText: "SP"
     }
   ];
-
-  const timelineDots = experiences.map((_, index) => index);
 
   return (
     <section id="experience" className={styles.experience} ref={sectionRef}>
@@ -136,31 +129,27 @@ const Experience = () => {
         <div className={styles.header} ref={headerRef}>
           <span className={styles.subtitle}>Professional Journey</span>
           <h2 className={styles.title}>
-            Career <span className={styles.highlight}>Timeline</span>
+            Career <span className={styles.highlight}>Experience</span>
           </h2>
           <p className={styles.description}>
             A decade of visual storytelling across broadcast television, 
-            music industry, and creative entrepreneurship.
+            creative industries, and entrepreneurial ventures.
           </p>
         </div>
 
-        <div className={styles.timeline} ref={timelineRef}>
+        <div className={styles.timeline}>
           <div className={styles.timelineTrack}>
-            {timelineDots.map((dot, index) => (
-              <div key={index} className={styles.timelineDot}></div>
-            ))}
+            <div className={styles.timelineDot}></div>
+            <div className={styles.timelineDot}></div>
+            <div className={styles.timelineDot}></div>
           </div>
 
-          <div className={styles.experienceList}>
-            {experiences.map((exp, index) => (
+          <div className={styles.experienceList} ref={cardsRef}>
+            {experiences.map((exp) => (
               <div key={exp.id} className={styles.experienceCard}>
-                <div className={styles.cardGlow}></div>
-                
                 <div className={styles.cardHeader}>
-                  <div className={`${styles.companyIcon} ${exp.iconBg}`}>
-                    <span className={styles.iconText}>
-                      {exp.company.split(' ').map(word => word[0]).join('').slice(0, 2)}
-                    </span>
+                  <div className={`${styles.companyIcon}`}>
+                    <span className={styles.iconText}>{exp.iconText}</span>
                   </div>
                   
                   <div className={styles.headerContent}>
@@ -172,11 +161,12 @@ const Experience = () => {
                       </span>
                     </div>
                     <h4 className={styles.company}>{exp.company}</h4>
-                    <div className={styles.metadata}>
-                      <span className={styles.period}>{exp.period}</span>
-                      <span className={styles.location}>{exp.location}</span>
-                    </div>
                   </div>
+                </div>
+
+                <div className={styles.metadata}>
+                  <span className={styles.period}>{exp.period}</span>
+                  <span className={styles.location}>{exp.location}</span>
                 </div>
 
                 <p className={styles.jobDescription}>{exp.description}</p>
@@ -191,7 +181,7 @@ const Experience = () => {
                 </div>
 
                 <div className={styles.techStack}>
-                  <span className={styles.techLabel}>Focus Areas:</span>
+                  <span className={styles.techLabel}>Key Areas:</span>
                   <div className={styles.techTags}>
                     {exp.technologies.map((tech, idx) => (
                       <span key={idx} className={styles.techTag}>
@@ -212,7 +202,7 @@ const Experience = () => {
           </div>
           <div className={styles.statItem}>
             <span className={styles.statNumber}>3</span>
-            <span className={styles.statLabel}>Major Roles</span>
+            <span className={styles.statLabel}>Major Positions</span>
           </div>
           <div className={styles.statItem}>
             <span className={styles.statNumber}>100+</span>

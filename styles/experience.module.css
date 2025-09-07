@@ -1,784 +1,604 @@
-/* styles/experience.module.css - Cinema Industry Timeline */
+/* styles/experience.module.css - Matching About Section Style */
 .experience {
-    padding: 8rem 0;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
-    position: relative;
-    overflow: hidden;
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Film Grain Effect - Same as About */
+.experience::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 60%);
+}
+
+.experience::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  animation: grain 8s steps(10) infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0) }
+  10% { transform: translate(-5%, -5%) }
+  20% { transform: translate(-10%, 5%) }
+  30% { transform: translate(5%, -10%) }
+  40% { transform: translate(-5%, 15%) }
+  50% { transform: translate(-10%, 5%) }
+  60% { transform: translate(15%, 0%) }
+  70% { transform: translate(0%, 10%) }
+  80% { transform: translate(-15%, 0%) }
+  90% { transform: translate(10%, 5%) }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Clean professional header - Same style as About */
+.header {
+  text-align: center;
+  margin-bottom: 6rem;
+  color: white;
+  position: relative;
+}
+
+.subtitle {
+  color: #ffd700;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 215, 0, 0.1);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  font-family: 'Courier New', monospace;
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 
+    2px 2px 0px #2a2a2a,
+    0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.highlight {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  border-radius: 1px;
+  opacity: 0.8;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Experience Content Grid */
+.experienceContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 6rem;
+}
+
+/* Professional Experience Cards - Same style as About */
+.experienceCard {
+  position: relative;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  padding: 2.5rem;
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.experienceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.experienceCard:hover::before {
+  opacity: 1;
+}
+
+.experienceCard:hover {
+  background: rgba(26, 26, 26, 0.8);
+  border-color: #ffd700;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(255, 215, 0, 0.2);
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.companyIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: linear-gradient(135px, #ffd700, #ffed4e);
+  border: 3px solid #1a1a1a;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.companyIcon::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid #ffd700;
+  border-radius: 19px;
+  background: linear-gradient(45deg, 
+    transparent 0%, 
+    rgba(255, 215, 0, 0.1) 50%, 
+    transparent 100%);
+}
+
+.iconText {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  font-family: 'Arial Black', sans-serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.jobTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffd700;
+  line-height: 1.2;
+  margin: 0;
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 
+    2px 2px 0px #1a1a1a,
+    0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.statusBadge {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  font-family: 'Arial Black', sans-serif;
+  border: 2px solid;
+  position: relative;
+  overflow: hidden;
+}
+
+.statusBadge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.5s ease;
+}
+
+.statusBadge:hover::before {
+  left: 100%;
+}
+
+.statusBadge.current {
+  background: #4ade80;
+  color: #1a1a1a;
+  border-color: #22c55e;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+}
+
+.statusBadge.broadcast {
+  background: #a855f7;
+  color: white;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.statusBadge.creative {
+  background: #ffd700;
+  color: #1a1a1a;
+  border-color: #ffed4e;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.company {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 1rem 0;
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.metadata {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.period, .location {
+  font-size: 0.9rem;
+  color: #ffd700;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+  padding: 0.5rem 1rem;
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid #ffd700;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.period::before {
+  content: '🎬';
+  font-size: 1rem;
+}
+
+.location::before {
+  content: '🏢';
+  font-size: 1rem;
+}
+
+.jobDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+  font-style: italic;
+  position: relative;
+}
+
+.jobDescription::before {
+  content: 'OVERVIEW:';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: #ffd700;
+  font-family: 'Arial Black', sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  font-style: normal;
+}
+
+.achievementsList {
+  margin-bottom: 2rem;
+}
+
+.achievementsList::before {
+  content: 'KEY ACHIEVEMENTS:';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: #ffd700;
+  font-family: 'Arial Black', sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.achievementItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+  margin-bottom: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.achievementItem:hover {
+  color: #ffd700;
+  transform: translateX(5px);
+}
+
+.achievementBullet {
+  width: 6px;
+  height: 6px;
+  background: #ffd700;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+.techStack {
+  border-top: 2px solid #ffd700;
+  padding-top: 1.5rem;
+  background: rgba(26, 26, 26, 0.5);
+  margin: 0 -2.5rem -2.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.techLabel {
+  font-size: 0.8rem;
+  color: #ffd700;
+  font-weight: 900;
+  display: block;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.techTag {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #ffd700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.techTag:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+  transform: translateY(-2px);
+}
+
+/* Stats Section - Same style as About */
+.careerStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 3rem 0;
+  border-top: 2px solid #ffd700;
+  border-bottom: 2px solid #ffd700;
+  position: relative;
+}
+
+.careerStats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 215, 0, 0.05) 20%, 
+    rgba(255, 215, 0, 0.05) 80%, 
+    transparent);
+}
+
+.statCard {
+  position: relative;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 20px;
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.statCard:hover::before {
+  opacity: 1;
+}
+
+.statCard:hover {
+  background: rgba(26, 26, 26, 0.9);
+  border-color: #ffd700;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Arial Black', sans-serif;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.statLabel {
+  font-size: 1rem;
+  color: #ccc;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Courier New', monospace;
+}
+
+.statDecoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover .statDecoration {
+  transform: scaleX(1);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .experience {
+    padding: 4rem 0;
   }
-  
-  /* Film Projection Effect */
-  .experience::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(ellipse 800px 600px at 50% 0%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
-      radial-gradient(ellipse 400px 300px at 20% 100%, rgba(255, 215, 0, 0.02) 0%, transparent 40%);
-    animation: projector 15s ease-in-out infinite;
-  }
-  
-  @keyframes projector {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
-  
-  /* Film Grain */
-  .experience::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.015;
-    background-image: 
-      radial-gradient(circle at 25% 25%, #fff 1px, transparent 1px),
-      radial-gradient(circle at 75% 75%, #fff 1px, transparent 1px);
-    background-size: 50px 50px, 80px 80px;
-    animation: filmGrainMove 20s linear infinite;
-    pointer-events: none;
-  }
-  
-  @keyframes filmGrainMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-50px, -80px); }
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
-  }
-  
-  /* Director's Viewfinder Header */
-  .header {
-    text-align: center;
-    margin-bottom: 6rem;
-    color: white;
-    position: relative;
-  }
-  
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -4rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 200px;
-    border: 4px solid #ffd700;
-    border-radius: 10px;
-    background: linear-gradient(135deg, 
-      transparent 0%, 
-      rgba(255, 215, 0, 0.05) 50%, 
-      transparent 100%);
-  }
-  
-  .header::after {
-    content: '⌖';
-    position: absolute;
-    top: -3rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3rem;
-    color: #ffd700;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-  }
-  
-  .subtitle {
-    color: #ffd700;
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    padding: 0.6rem 1.5rem;
-    background: rgba(26, 26, 26, 0.8);
-    border: 2px solid #ffd700;
-    border-radius: 4px;
-    font-family: 'Courier New', monospace;
-    position: relative;
-  }
-  
-  .subtitle::before,
-  .subtitle::after {
-    content: '●';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ff4444;
-    font-size: 0.6rem;
-    animation: recordingBlink 1.5s infinite;
-  }
-  
-  .subtitle::before { left: 0.5rem; }
-  .subtitle::after { right: 0.5rem; }
-  
-  @keyframes recordingBlink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0.3; }
-  }
-  
-  .title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    font-family: 'Arial Black', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 
-      2px 2px 0px #2a2a2a,
-      0 0 30px rgba(255, 215, 0, 0.4);
-  }
-  
-  .highlight {
-    background: linear-gradient(45deg, #ffd700, #ffed4e);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-  }
-  
-  .description {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #ccc;
-    max-width: 700px;
-    margin: 0 auto;
-    font-style: italic;
-    position: relative;
-  }
-  
-  .description::before,
-  .description::after {
-    content: '"';
-    font-size: 2rem;
-    color: #ffd700;
-    font-family: serif;
-  }
-  
-  /* Film Strip Timeline */
-  .timeline {
-    position: relative;
-    margin: 6rem 0;
-    padding: 0 4rem;
-  }
-  
-  /* 35mm Film Strip */
-  .timelineTrack {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    bottom: 0;
-    width: 70px;
-    background: linear-gradient(to right,
-      #2a2a2a 0%,
-      #3a3a3a 15%,
-      #4a4a4a 50%,
-      #3a3a3a 85%,
-      #2a2a2a 100%);
-    border-left: 3px solid #ffd700;
-    border-right: 3px solid #ffd700;
-    box-shadow: 
-      inset 0 0 20px rgba(0, 0, 0, 0.5),
-      0 0 30px rgba(255, 215, 0, 0.2);
-  }
-  
-  /* Film Perforations */
-  .timelineTrack::before {
-    content: '';
-    position: absolute;
-    left: -8px;
-    top: 0;
-    bottom: 0;
-    width: 16px;
-    background: repeating-linear-gradient(
-      to bottom,
-      #ffd700 0px,
-      #ffd700 8px,
-      transparent 8px,
-      transparent 16px
-    );
-    border-radius: 2px;
-  }
-  
-  .timelineTrack::after {
-    content: '';
-    position: absolute;
-    right: -8px;
-    top: 0;
-    bottom: 0;
-    width: 16px;
-    background: repeating-linear-gradient(
-      to bottom,
-      #ffd700 0px,
-      #ffd700 8px,
-      transparent 8px,
-      transparent 16px
-    );
-    border-radius: 2px;
-  }
-  
-  /* Film Frames as Timeline Markers */
-  .timelineDot {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 40px;
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    border: 3px solid #1a1a1a;
-    border-radius: 4px;
-    z-index: 3;
-    box-shadow: 
-      0 0 25px rgba(255, 215, 0, 0.6),
-      inset 0 0 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #1a1a1a;
-    font-weight: 900;
-    font-family: 'Arial Black', sans-serif;
-  }
-  
-  .timelineDot:nth-child(1) { 
-    top: 15%; 
-    content: '1';
-  }
-  .timelineDot:nth-child(2) { 
-    top: 50%; 
-    content: '2';
-  }
-  .timelineDot:nth-child(3) { 
-    top: 85%; 
-    content: '3';
-  }
-  
-  .timelineDot:nth-child(1)::after { content: '1'; }
-  .timelineDot:nth-child(2)::after { content: '2'; }
-  .timelineDot:nth-child(3)::after { content: '3'; }
-  
-  .experienceList {
-    display: flex;
-    flex-direction: column;
-    gap: 8rem;
-    position: relative;
-  }
-  
-  /* Movie Poster Style Cards */
-  .experienceCard {
-    position: relative;
-    width: 450px;
-    background: linear-gradient(135deg, 
-      #1a1a1a 0%, 
-      #2a2a2a 50%,
-      #1a1a1a 100%);
-    border: 4px solid #ffd700;
-    border-radius: 8px;
-    padding: 0;
-    color: white;
-    transition: all 0.4s ease;
-    overflow: hidden;
-    box-shadow: 
-      0 20px 60px rgba(0, 0, 0, 0.6),
-      0 0 0 2px rgba(255, 215, 0, 0.3);
-  }
-  
-  /* Movie Poster Header */
-  .experienceCard::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    border-bottom: 2px solid #1a1a1a;
-  }
-  
-  .experienceCard::after {
-    content: 'NOW SHOWING';
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.9rem;
-    font-weight: 900;
-    color: #1a1a1a;
-    font-family: 'Arial Black', sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  
-  /* Alternating Positioning like Movie Theater */
-  .experienceCard:nth-child(odd) {
-    margin-left: 0;
-    margin-right: auto;
-  }
-  
-  .experienceCard:nth-child(even) {
-    margin-left: auto;
-    margin-right: 0;
-  }
-  
-  .experienceCard:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 
-      0 30px 80px rgba(0, 0, 0, 0.7),
-      0 0 50px rgba(255, 215, 0, 0.4);
-    border-color: #ffed4e;
-  }
-  
-  /* Movie Poster Content */
+
   .cardHeader {
-    margin-top: 80px;
-    padding: 2rem;
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    position: relative;
-  }
-  
-  /* Studio Logo */
-  .companyIcon {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    border: 3px solid #1a1a1a;
-    box-shadow: 
-      0 15px 40px rgba(0, 0, 0, 0.4),
-      inset 0 0 20px rgba(255, 255, 255, 0.2);
-    position: relative;
-  }
-  
-  .companyIcon::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 2px solid #ffd700;
-    border-radius: 14px;
-    background: linear-gradient(45deg, 
-      transparent 0%, 
-      rgba(255, 215, 0, 0.1) 50%, 
-      transparent 100%);
-  }
-  
-  .iconText {
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: #1a1a1a;
-    font-family: 'Arial Black', sans-serif;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .headerContent {
-    flex: 1;
-  }
-  
-  .titleRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    gap: 1rem;
-  }
-  
-  /* Movie Title Style */
-  .jobTitle {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: #ffd700;
-    line-height: 1.2;
-    margin: 0;
-    font-family: 'Arial Black', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 
-      2px 2px 0px #1a1a1a,
-      0 0 15px rgba(255, 215, 0, 0.5);
-  }
-  
-  /* Rating System Badges */
-  .statusBadge {
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    flex-shrink: 0;
-    font-family: 'Arial Black', sans-serif;
-    border: 2px solid;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .statusBadge::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(255, 255, 255, 0.3), 
-      transparent);
-    transition: left 0.5s ease;
-  }
-  
-  .statusBadge:hover::before {
-    left: 100%;
-  }
-  
-  .statusBadge.current {
-    background: #4ade80;
-    color: #1a1a1a;
-    border-color: #22c55e;
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
-  }
-  
-  .statusBadge.broadcast {
-    background: #a855f7;
-    color: white;
-    border-color: #8b5cf6;
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-  }
-  
-  .statusBadge.creative {
-    background: #ffd700;
-    color: #1a1a1a;
-    border-color: #ffed4e;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-  }
-  
-  /* Studio Name */
-  .company {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: white;
-    margin: 0 0 1rem 0;
-    font-family: 'Arial Black', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  
-  /* Film Details */
-  .metadata {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-    padding: 0 2rem;
-  }
-  
-  .period, .location {
-    font-size: 0.9rem;
-    color: #ffd700;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Courier New', monospace;
-    padding: 0.5rem 1rem;
-    background: rgba(26, 26, 26, 0.8);
-    border: 1px solid #ffd700;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  .period::before {
-    content: '🎬';
-    font-size: 1rem;
-  }
-  
-  .location::before {
-    content: '🏢';
-    font-size: 1rem;
-  }
-  
-  /* Plot Synopsis */
-  .jobDescription {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #e2e8f0;
-    margin-bottom: 2rem;
-    padding: 0 2rem;
-    font-style: italic;
-    position: relative;
-  }
-  
-  .jobDescription::before {
-    content: 'SYNOPSIS:';
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 900;
-    color: #ffd700;
-    font-family: 'Arial Black', sans-serif;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-    font-style: normal;
-  }
-  
-  /* Movie Credits */
-  .achievementsList {
-    padding: 0 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .achievementsList::before {
-    content: 'FEATURING:';
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 900;
-    color: #ffd700;
-    font-family: 'Arial Black', sans-serif;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-  }
-  
-  .achievementItem {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #e2e8f0;
-    margin-bottom: 0.8rem;
-    transition: all 0.3s ease;
-  }
-  
-  .achievementItem:hover {
-    color: #ffd700;
-    transform: translateX(5px);
-  }
-  
-  .achievementBullet {
-    width: 6px;
-    height: 6px;
-    background: #ffd700;
-    border-radius: 50%;
-    margin-top: 0.5rem;
-    flex-shrink: 0;
-    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-  }
-  
-  /* Technical Specs */
-  .techStack {
-    border-top: 2px solid #ffd700;
-    padding: 1.5rem 2rem 2rem;
-    background: rgba(26, 26, 26, 0.5);
-  }
-  
-  .techLabel {
-    font-size: 0.8rem;
-    color: #ffd700;
-    font-weight: 900;
-    display: block;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Arial Black', sans-serif;
-  }
-  
-  .techTags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-  }
-  
-  .techTag {
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    color: #ffd700;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    font-family: 'Courier New', monospace;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  .techTag:hover {
-    background: rgba(255, 215, 0, 0.2);
-    border-color: #ffd700;
-    transform: translateY(-2px);
-  }
-  
-  /* Box Office Stats */
-  .careerStats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 6rem;
-    padding: 3rem;
-    background: linear-gradient(135deg, 
-      rgba(26, 26, 26, 0.9), 
-      rgba(42, 42, 42, 0.7));
-    border: 4px solid #ffd700;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .careerStats::before {
-    content: 'BOX OFFICE TOTALS';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 900;
-    color: #1a1a1a;
-    font-family: 'Arial Black', sans-serif;
-    letter-spacing: 2px;
-  }
-  
-  .statItem {
+    flex-direction: column;
     text-align: center;
-    color: white;
-    margin-top: 50px;
-    padding: 1.5rem;
-    background: rgba(26, 26, 26, 0.6);
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    gap: 1.5rem;
   }
-  
-  .statItem:hover {
-    border-color: #ffd700;
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+
+  .titleRow {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
   }
-  
+
+  .metadata {
+    justify-content: center;
+  }
+
+  .careerStats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .experienceCard {
+    padding: 2rem;
+  }
+
+  .companyIcon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .jobTitle {
+    font-size: 1.3rem;
+  }
+
+  .careerStats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .statCard {
+    padding: 1.5rem 1rem;
+  }
+
   .statNumber {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: linear-gradient(45deg, #ffd700, #ffed4e);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-    font-family: 'Arial Black', sans-serif;
-    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    font-size: 2rem;
   }
-  
-  .statLabel {
-    font-size: 1rem;
-    color: #ccc;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-family: 'Courier New', monospace;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 968px) {
-    .experience {
-      padding: 4rem 0;
-    }
-  
-    .timeline {
-      padding: 0 2rem;
-    }
-  
-    .timelineTrack,
-    .timelineDot {
-      display: none;
-    }
-  
-    .experienceCard {
-      width: 100%;
-      margin: 0 auto !important;
-    }
-  
-    .cardHeader {
-      flex-direction: column;
-      text-align: center;
-      margin-top: 60px;
-    }
-  
-    .titleRow {
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: center;
-    }
-  
-    .metadata {
-      justify-content: center;
-      padding: 0 1rem;
-    }
-  
-    .jobDescription,
-    .achievementsList,
-    .techStack {
-      padding: 0 1rem;
-    }
-  
-    .techStack {
-      padding: 1.5rem 1rem 2rem;
-    }
-  
-    .careerStats {
-      margin-top: 4rem;
-      padding: 2rem 1rem;
-    }
-  }
-  
-  @media (max-width: 640px) {
-    .experienceCard {
-      border-width: 3px;
-    }
-  
-    .cardHeader {
-      padding: 1.5rem;
-    }
-  
-    .companyIcon {
-      width: 70px;
-      height: 70px;
-    }
-  
-    .jobTitle {
-      font-size: 1.3rem;
-    }
-  
-    .careerStats {
-      grid-template-columns: 1fr;
-      padding: 1.5rem 1rem;
-    }
-  
-    .statNumber {
-      font-size: 2rem;
-    }
-    
-    .title {
-      font-size: clamp(2rem, 5vw, 3rem);
-    }
-  }
+}
