@@ -337,7 +337,7 @@ const SoftwareSkills = () => {
           </div>
         </div>
 
-        <div className={styles.skillsStats}>
+        {/* <div className={styles.skillsStats}>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>7</span>
             <span className={styles.statLabel}>Professional Tools</span>
@@ -353,7 +353,7 @@ const SoftwareSkills = () => {
             <span className={styles.statLabel}>Level Expertise</span>
             <div className={styles.statDecoration}></div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -149,10 +149,7 @@ const Equipment = () => {
           <h2 className={styles.title}>
             Equipment & <span className={styles.highlight}>Technical Setup</span>
           </h2>
-          <p className={styles.description}>
-            Discover the professional-grade equipment and technology that powers my creative work, 
-            from high-end cameras to advanced lighting systems.
-          </p>
+          
         </div>
 
         <div className={styles.carousel} ref={carouselRef}>

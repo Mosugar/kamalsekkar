@@ -130,23 +130,23 @@ const Hero = () => {
         </div>
 
         {/* Director Credits */}
-        <div className={styles.heroCredits}>
+        {/* <div className={styles.heroCredits}>
           Directed by Kamal Sekkar
-        </div>
+        </div> */}
       </div>
 
       {/* Minimal Camera UI */}
       <div className={styles.cameraUI}>
         {/* Recording Indicator */}
-        <div className={styles.recordingIndicator}>
+        {/* <div className={styles.recordingIndicator}>
           <div className={styles.recDot}></div>
           <span>RECORDING</span>
-        </div>
+        </div> */}
         
         {/* Camera Settings */}
         <div className={styles.cameraSettings}>
-          <div className={styles.resolution}>4K • CINEMA</div>
-          <div className={styles.timer}>00:00:47</div>
+          {/* <div className={styles.resolution}>4K • CINEMA</div> */}
+          {/* <div className={styles.timer}>00:00:47</div> */}
         </div>
       </div>
 
