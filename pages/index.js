@@ -12,7 +12,6 @@ import {
   ContactFooter
 } from '../components';
 import SoftwareSkills from '@/components/SoftwareSkills';
-import { ContactIcon } from 'lucide-react';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
