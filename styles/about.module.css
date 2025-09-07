@@ -1,7 +1,7 @@
-/* styles/about.module.css */
+/* styles/about.module.css - Cinematic Director Theme */
 .about {
     padding: 8rem 0;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
     position: relative;
     overflow: hidden;
   }
@@ -13,7 +13,39 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 60%);
+  }
+  
+  /* Film Grain Effect */
+  .about::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.02;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    animation: grain 8s steps(10) infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0) }
+    10% { transform: translate(-5%, -5%) }
+    20% { transform: translate(-10%, 5%) }
+    30% { transform: translate(5%, -10%) }
+    40% { transform: translate(-5%, 15%) }
+    50% { transform: translate(-10%, 5%) }
+    60% { transform: translate(15%, 0%) }
+    70% { transform: translate(0%, 10%) }
+    80% { transform: translate(-15%, 0%) }
+    90% { transform: translate(10%, 5%) }
   }
   
   .container {
@@ -32,7 +64,7 @@
     margin-bottom: 6rem;
   }
   
-  /* Image Section */
+  /* Image Section - Cinematic Style */
   .imageSection {
     position: relative;
     display: flex;
@@ -48,14 +80,15 @@
     position: relative;
     width: 320px;
     height: 380px;
-    border-radius: 24px;
+    border-radius: 20px;
     overflow: hidden;
-    background: linear-gradient(135deg, #1e293b, #334155);
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
     box-shadow: 
-      0 25px 50px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(59, 130, 246, 0.2);
+      0 25px 50px rgba(0, 0, 0, 0.4),
+      0 0 0 2px rgba(255, 215, 0, 0.3);
     transform: rotate(-2deg);
     transition: transform 0.4s ease;
+    border: 3px solid #ffd700;
   }
   
   .profileImage:hover {
@@ -72,30 +105,36 @@
   .imageFrame {
     position: absolute;
     inset: -8px;
-    background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
-    border-radius: 28px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    border-radius: 24px;
     z-index: -1;
     opacity: 0.6;
   }
   
+  /* Director Badge */
   .creativeBadge {
     position: absolute;
     top: -15px;
     right: -15px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #1a1a1a;
     padding: 1rem 1.5rem;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+    box-shadow: 
+      0 15px 40px rgba(255, 215, 0, 0.4),
+      0 0 0 2px #1a1a1a;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid #1a1a1a;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
   
   .creativeBadge span {
     display: block;
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 900;
     line-height: 1;
   }
   
@@ -104,9 +143,10 @@
     font-size: 0.8rem;
     opacity: 0.9;
     margin-top: 0.2rem;
+    font-weight: 700;
   }
   
-  /* Content Section */
+  /* Content Section - Film Industry Style */
   .contentSection {
     color: white;
   }
@@ -115,28 +155,54 @@
     margin-bottom: 2rem;
   }
   
+  /* Director's Slate Header */
   .subtitle {
-    color: var(--accent-blue);
+    color: #ffd700;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    display: block;
+    display: inline-block;
     margin-bottom: 1rem;
+    padding: 0.5rem 1.2rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid #ffd700;
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
+    backdrop-filter: blur(10px);
   }
   
   .title {
     font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 800;
+    font-weight: 900;
     line-height: 1.2;
     margin-bottom: 2rem;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 
+      2px 2px 0px #2a2a2a,
+      0 0 20px rgba(255, 215, 0, 0.3);
   }
   
   .highlight {
-    background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+  
+  .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
+    border-radius: 1px;
+    opacity: 0.8;
   }
   
   .description {
@@ -144,6 +210,7 @@
     line-height: 1.7;
     color: #e2e8f0;
     margin-bottom: 2.5rem;
+    font-family: 'Inter', sans-serif;
   }
   
   .description p {
@@ -151,19 +218,45 @@
   }
   
   .description strong {
-    color: var(--accent-blue);
-    font-weight: 600;
+    color: #ffd700;
+    font-weight: 700;
   }
   
+  /* Professional Skills Section */
   .expertise {
     margin-bottom: 3rem;
+    position: relative;
+    padding: 2rem;
+    background: rgba(26, 26, 26, 0.6);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+  }
+  
+  .expertise::before {
+    content: '🎬';
+    position: absolute;
+    top: -15px;
+    left: 25px;
+    font-size: 1.8rem;
+    background: #ffd700;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #1a1a1a;
   }
   
   .expertise h3 {
-    font-size: 1.2rem;
-    color: white;
+    font-size: 1.3rem;
+    color: #ffd700;
     margin-bottom: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Arial Black', sans-serif;
   }
   
   .expertiseGrid {
@@ -178,19 +271,26 @@
     gap: 0.8rem;
     padding: 0.8rem 0;
     font-size: 1rem;
-    color: #cbd5e1;
+    color: #e2e8f0;
     font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .expertiseItem:hover {
+    color: #ffd700;
+    transform: translateX(5px);
   }
   
   .expertiseIcon {
     width: 8px;
     height: 8px;
-    background: var(--accent-blue);
+    background: #ffd700;
     border-radius: 50%;
     flex-shrink: 0;
-    box-shadow: 0 0 10px var(--accent-blue);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
   }
   
+  /* Action Buttons - Director Style */
   .actions {
     display: flex;
     gap: 1.5rem;
@@ -199,17 +299,26 @@
   }
   
   .primaryBtn {
-    padding: 1rem 2rem;
-    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
-    border-radius: 50px;
-    font-weight: 600;
+    padding: 1.2rem 2.4rem;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    font-weight: 900;
     font-size: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+    box-shadow: 
+      0 10px 30px rgba(255, 215, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
     position: relative;
     overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Arial Black', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .primaryBtn::before {
@@ -224,8 +333,10 @@
   }
   
   .primaryBtn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+      0 15px 40px rgba(255, 215, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
   
   .primaryBtn:hover::before {
@@ -236,71 +347,115 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    background: transparent;
-    color: var(--accent-blue);
-    border: 2px solid rgba(59, 130, 246, 0.3);
-    border-radius: 50px;
-    font-weight: 600;
+    padding: 1.2rem 2rem;
+    background: rgba(26, 26, 26, 0.8);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    font-weight: 700;
     font-size: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Arial Black', sans-serif;
+    backdrop-filter: blur(15px);
   }
   
   .secondaryBtn:hover {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: var(--primary-blue);
+    background: rgba(255, 215, 0, 0.1);
+    border-color: #ffed4e;
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
   }
   
-  /* Stats Section */
+  /* Stats Section - Film Credits Style */
   .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
+    padding: 3rem 0;
+    border-top: 2px solid #ffd700;
+    border-bottom: 2px solid #ffd700;
+    position: relative;
+  }
+  
+  .stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 215, 0, 0.05) 20%, 
+      rgba(255, 215, 0, 0.05) 80%, 
+      transparent);
   }
   
   .statCard {
     position: relative;
     text-align: center;
     padding: 2rem 1.5rem;
-    background: rgba(30, 41, 59, 0.6);
+    background: rgba(26, 26, 26, 0.8);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 2px solid rgba(255, 215, 0, 0.3);
     border-radius: 20px;
     color: white;
     transition: all 0.3s ease;
     overflow: hidden;
   }
   
+  .statCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .statCard:hover::before {
+    opacity: 1;
+  }
+  
   .statCard:hover {
-    background: rgba(30, 41, 59, 0.8);
-    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(26, 26, 26, 0.9);
+    border-color: #ffd700;
     transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
   }
   
   .statNumber {
     font-size: 2.5rem;
-    font-weight: 800;
+    font-weight: 900;
     line-height: 1;
     margin-bottom: 0.5rem;
-    background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-family: 'Arial Black', sans-serif;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
   }
   
   .suffix {
-    color: var(--accent-blue);
+    color: #ffd700;
+    font-weight: 900;
   }
   
   .statLabel {
     font-size: 1rem;
-    color: #94a3b8;
-    font-weight: 500;
+    color: #ccc;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    font-family: 'Courier New', monospace;
   }
   
   .statDecoration {
@@ -309,7 +464,7 @@
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
     transform: scaleX(0);
     transition: transform 0.3s ease;
   }
@@ -342,6 +497,10 @@
     .stats {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
+    }
+    
+    .expertise {
+      padding: 1.5rem;
     }
   }
   
@@ -387,5 +546,13 @@
     .secondaryBtn {
       width: 100%;
       justify-content: center;
+    }
+    
+    .expertise {
+      padding: 1rem;
+    }
+    
+    .title {
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
     }
   }

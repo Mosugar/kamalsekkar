@@ -1,4 +1,4 @@
-// components/Hero.jsx - Cinematic Director Hero
+// components/Hero.jsx - Optimized Full Size Cinematic Director Hero
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import styles from '../styles/hero.module.css';
@@ -50,8 +50,10 @@ const Hero = () => {
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       const parallax = heroRef.current;
-      const speed = scrolled * 0.2; // Subtle parallax
-      parallax.style.transform = `translateY(${speed}px)`;
+      const speed = scrolled * 0.15; // Subtle parallax for cinematic feel
+      if (parallax) {
+        parallax.style.transform = `translateY(${speed}px)`;
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -74,6 +76,7 @@ const Hero = () => {
 
   return (
     <section id="home" className={styles.hero} ref={heroRef}>
+      {/* Cinematic Background Layers */}
       <div className={styles.heroBackground}>
         <div className={styles.gradientOverlay}></div>
       </div>
@@ -87,19 +90,21 @@ const Hero = () => {
         <div className={styles.perforation}></div>
       </div>
 
+      {/* Viewfinder Background Integration */}
       <div className={styles.viewfinderContainer} ref={viewfinderRef}>
         <img 
           src="https://res.cloudinary.com/dylpck2et/image/upload/v1757191601/camera-lens-view-finder-display-background_z1samt.png"
-          alt="Camera Viewfinder"
+          alt="Camera Viewfinder Background"
           className={styles.viewfinderImage}
         />
         <div className={styles.viewfinderOverlay}></div>
       </div>
       
+      {/* Main Hero Content */}
       <div className={styles.heroContent}>
         <div className={styles.container}>
           <div className={styles.heroText}>
-            {/* Clapperboard Header */}
+            {/* Director's Clapperboard */}
             <div className={styles.clapperboard} ref={clapperRef}>
               <div className={styles.clapperStripes}>
                 <div className={styles.clapperStripe}></div>
@@ -112,6 +117,7 @@ const Hero = () => {
               </div>
             </div>
 
+            {/* Cinematic Title */}
             <h1 className={styles.heroTitle} ref={titleRef}>
               <span className={styles.greeting}>Lights, Camera, Action</span>
               <br />
@@ -119,20 +125,24 @@ const Hero = () => {
               <span className={styles.accent}> Sekkar</span>
             </h1>
             
+            {/* Professional Subtitle */}
             <h2 className={styles.subtitle} ref={subtitleRef}>
               Director • Cinematographer • Visual Storyteller
             </h2>
             
+            {/* Action Buttons */}
             <div className={styles.cta} ref={ctaRef}>
               <button 
                 className={styles.primaryBtn}
                 onClick={scrollToPortfolio}
+                aria-label="View Portfolio Reel"
               >
                 <span>View Reel</span>
               </button>
               <button 
                 className={styles.secondaryBtn}
                 onClick={scrollToContact}
+                aria-label="Get In Touch"
               >
                 <span>Get In Touch</span>
               </button>
@@ -140,21 +150,24 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Professional Credits */}
+        {/* Director Credits */}
         <div className={styles.heroCredits}>
           <div>DIRECTED BY KAMAL SEKKAR</div>
         </div>
       </div>
 
-      {/* Enhanced Camera UI */}
+      {/* Professional Camera UI */}
       <div className={styles.cameraUI}>
+        {/* Recording Indicator */}
         <div className={styles.recordingIndicator}>
           <div className={styles.recDot}></div>
           <span>RECORDING</span>
         </div>
+        
+        {/* Camera Settings Display */}
         <div className={styles.cameraSettings}>
-          <span className={styles.resolution}>4K • CINEMA</span>
-          <span className={styles.timer}>00:00:47</span>
+          <div className={styles.resolution}>4K • CINEMA</div>
+          <div className={styles.timer}>00:00:47</div>
         </div>
       </div>
 
