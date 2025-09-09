@@ -63,6 +63,53 @@ const Portfolio = () => {
 
   const portfolioData = {
     photography: [
+      // Food Photography
+      {
+        id: 'food-1',
+        type: 'photography',
+        category: 'Food Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02510_qatmwt.jpg',
+        title: 'Gourmet Food Styling',
+        description: 'Professional food photography with artistic presentation and premium styling techniques.',
+        tags: ['Food', 'Commercial', 'Styling']
+      },
+      {
+        id: 'food-2',
+        type: 'photography',
+        category: 'Food Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02514_hglomw.jpg',
+        title: 'Culinary Excellence',
+        description: 'High-end food photography capturing the essence and appeal of gourmet cuisine.',
+        tags: ['Food', 'Gourmet', 'Photography']
+      },
+      {
+        id: 'food-3',
+        type: 'photography',
+        category: 'Food Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02535_pympiq.jpg',
+        title: 'Restaurant Quality',
+        description: 'Professional food photography for restaurant menus and marketing materials.',
+        tags: ['Food', 'Restaurant', 'Menu']
+      },
+      {
+        id: 'food-4',
+        type: 'photography',
+        category: 'Food Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/cover_reel_vqnkq1.jpg',
+        title: 'Food Cover Shot',
+        description: 'Premium food photography designed for editorial covers and marketing campaigns.',
+        tags: ['Food', 'Cover', 'Editorial']
+      },
+      // Product Photography
+      {
+        id: 'product-1',
+        type: 'photography',
+        category: 'Product Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422912/F-_5_p0fdpr.jpg',
+        title: 'Commercial Product Shot',
+        description: 'Professional product photography for e-commerce and advertising campaigns.',
+        tags: ['Product', 'Commercial', 'E-commerce']
+      },
       // Fashion Photography
       {
         id: 'fashion-1',
@@ -309,6 +356,10 @@ const Portfolio = () => {
         return portfolioData.photography;
       case 'video':
         return portfolioData.videos;
+      case 'food':
+        return portfolioData.photography.filter(item => item.category === 'Food Photography');
+      case 'product':
+        return portfolioData.photography.filter(item => item.category === 'Product Photography');
       default:
         return allItems;
     }
@@ -360,6 +411,22 @@ const Portfolio = () => {
             <span className={styles.filterIcon}>📸</span>
             Photography
             <span className={styles.count}>({portfolioData.photography.length})</span>
+          </button>
+          <button
+            className={`${styles.filterBtn} ${activeFilter === 'food' ? styles.active : ''}`}
+            onClick={() => setActiveFilter('food')}
+          >
+            <span className={styles.filterIcon}>🍽️</span>
+            Food
+            <span className={styles.count}>({portfolioData.photography.filter(item => item.category === 'Food Photography').length})</span>
+          </button>
+          <button
+            className={`${styles.filterBtn} ${activeFilter === 'product' ? styles.active : ''}`}
+            onClick={() => setActiveFilter('product')}
+          >
+            <span className={styles.filterIcon}>📦</span>
+            Product
+            <span className={styles.count}>({portfolioData.photography.filter(item => item.category === 'Product Photography').length})</span>
           </button>
           <button
             className={`${styles.filterBtn} ${activeFilter === 'video' ? styles.active : ''}`}
