@@ -63,52 +63,99 @@ const Portfolio = () => {
 
   const portfolioData = {
     photography: [
-      // Food Photography
+      // Food Photography - New Images
       {
         id: 'food-1',
         type: 'photography',
         category: 'Food Photography',
-        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02510_qatmwt.jpg',
-        title: 'Gourmet Food Styling',
-        description: 'Professional food photography with artistic presentation and premium styling techniques.',
-        tags: ['Food', 'Commercial', 'Styling']
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1758199446/DSC09558_hi2ev0.jpg',
+        title: 'Artisan Food Presentation',
+        description: 'Professional food photography showcasing artisan culinary creations with premium styling.',
+        tags: ['Food', 'Artisan', 'Professional']
       },
       {
         id: 'food-2',
         type: 'photography',
         category: 'Food Photography',
-        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02514_hglomw.jpg',
-        title: 'Culinary Excellence',
-        description: 'High-end food photography capturing the essence and appeal of gourmet cuisine.',
-        tags: ['Food', 'Gourmet', 'Photography']
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1758199347/DSC09586_qqcn4j.jpg',
+        title: 'Gourmet Cuisine',
+        description: 'High-end food photography capturing the essence and appeal of gourmet dishes.',
+        tags: ['Food', 'Gourmet', 'Fine Dining']
       },
       {
         id: 'food-3',
         type: 'photography',
         category: 'Food Photography',
-        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02535_pympiq.jpg',
-        title: 'Restaurant Quality',
-        description: 'Professional food photography for restaurant menus and marketing materials.',
-        tags: ['Food', 'Restaurant', 'Menu']
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1758199326/DSC05348_ecc31s.jpg',
+        title: 'Culinary Excellence',
+        description: 'Premium food photography with artistic composition and professional lighting.',
+        tags: ['Food', 'Culinary', 'Photography']
       },
       {
         id: 'food-4',
         type: 'photography',
         category: 'Food Photography',
-        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/cover_reel_vqnkq1.jpg',
-        title: 'Food Cover Shot',
-        description: 'Premium food photography designed for editorial covers and marketing campaigns.',
-        tags: ['Food', 'Cover', 'Editorial']
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1758199310/DSC09544_cpc2a6.jpg',
+        title: 'Restaurant Quality Shoots',
+        description: 'Professional food photography for restaurant menus and marketing materials.',
+        tags: ['Food', 'Restaurant', 'Menu']
       },
+      {
+        id: 'food-5',
+        type: 'photography',
+        category: 'Food Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1758199306/DSC09601_htervl.jpg',
+        title: 'Food Styling Mastery',
+        description: 'Expert food styling and photography for commercial and editorial use.',
+        tags: ['Food', 'Styling', 'Commercial']
+      },
+      // Product Photography - Moved from Food Section
+     
       // Product Photography
       {
         id: 'product-1',
         type: 'photography',
         category: 'Product Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02510_qatmwt.jpg',
+        title: 'Premium Product Display',
+        description: 'Professional product photography with artistic presentation and commercial appeal.',
+        tags: ['Product', 'Commercial', 'Display']
+      },
+      {
+        id: 'product-2',
+        type: 'photography',
+        category: 'Product Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02514_hglomw.jpg',
+        title: 'Commercial Product Shots',
+        description: 'High-end product photography for e-commerce and advertising campaigns.',
+        tags: ['Product', 'E-commerce', 'Commercial']
+      },
+      {
+        id: 'product-3',
+        type: 'photography',
+        category: 'Product Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/DSC02535_pympiq.jpg',
+        title: 'Brand Photography',
+        description: 'Professional product photography for brand marketing and promotional materials.',
+        tags: ['Product', 'Branding', 'Marketing']
+      },
+      {
+        id: 'product-4',
+        type: 'photography',
+        category: 'Product Photography',
+        image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422913/cover_reel_vqnkq1.jpg',
+        title: 'Editorial Product Shot',
+        description: 'Premium product photography designed for editorial covers and campaigns.',
+        tags: ['Product', 'Editorial', 'Premium']
+      },
+      {
+        id: 'product-5',
+        type: 'photography',
+        category: 'Product Photography',
         image: 'https://res.cloudinary.com/dylpck2et/image/upload/v1757422912/F-_5_p0fdpr.jpg',
-        title: 'Commercial Product Shot',
-        description: 'Professional product photography for e-commerce and advertising campaigns.',
-        tags: ['Product', 'Commercial', 'E-commerce']
+        title: 'Studio Product Photography',
+        description: 'Professional studio product photography for e-commerce and advertising.',
+        tags: ['Product', 'Studio', 'E-commerce']
       },
       // Fashion Photography
       {

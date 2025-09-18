@@ -85,6 +85,7 @@ const Experience = () => {
         "Built strategic partnerships with key industry players"
       ],
       technologies: ["Leadership", "Creative Direction", "Project Management", "Business Development"],
+      logo: "https://res.cloudinary.com/dylpck2et/image/upload/v1749577159/Logo_wardd_studios_inwre5.png",
       iconText: "WS"
     },
     {
@@ -102,6 +103,7 @@ const Experience = () => {
         "Created compelling documentary content for diverse audiences"
       ],
       technologies: ["Broadcast Production", "Multi-camera Systems", "Live TV", "Documentary"],
+      logo: "https://res.cloudinary.com/dylpck2et/image/upload/v1758200252/snrt-maroc-seeklogo_vebshi.png",
       iconText: "SN"
     },
     {
@@ -149,7 +151,15 @@ const Experience = () => {
               <div key={exp.id} className={styles.experienceCard}>
                 <div className={styles.cardHeader}>
                   <div className={`${styles.companyIcon}`}>
-                    <span className={styles.iconText}>{exp.iconText}</span>
+                    {exp.logo ? (
+                      <img 
+                        src={exp.logo} 
+                        alt={`${exp.company} logo`}
+                        className={styles.companyLogo}
+                      />
+                    ) : (
+                      <span className={styles.iconText}>{exp.iconText}</span>
+                    )}
                   </div>
                   
                   <div className={styles.headerContent}>
